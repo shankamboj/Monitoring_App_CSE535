@@ -1,35 +1,42 @@
 package com.example.monitoringapp
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
+import android.content.Intent
+import android.widget.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.monitoringapp.ui.theme.MonitoringAppTheme
+import android.widget.Toast
+import com.example.healthmonitor.VitalSignsActivity
+import androidx.activity.ComponentActivity
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            MonitoringAppTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+        setContentView(R.layout.activity_main)
+
+        val btnRecordData = findViewById<Button>(R.id.btnRecordData)
+        val btnDeleteData = findViewById<Button>(R.id.btnDeleteData)
+
+        // Button 1: Navigate to Activity 1 (Vital Signs)
+        btnRecordData.setOnClickListener {
+            val intent = Intent(this, VitalSignsActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Button 2: Delete all data from database
+        btnDeleteData.setOnClickListener {
+            deleteAllData()
         }
     }
-}
 
+    private fun deleteAllData() {
+        Toast.makeText(this, "All data deleted successfully", Toast.LENGTH_SHORT).show()
+    }
+}
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
