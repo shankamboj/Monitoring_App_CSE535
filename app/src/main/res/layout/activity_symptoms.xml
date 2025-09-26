@@ -1,14 +1,236 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:background="#f5f5f5"
+    android:padding="16dp">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Symptoms Activity"
-        android:textSize="24sp" />
+        android:orientation="vertical">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Symptom Logging"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:textColor="#2196F3" />
+
+        <TextView
+            android:id="@+id/tvInstructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rate each symptom from 0-5 (0=No symptom, 1=Very Mild, 5=Very Severe)"
+            android:textSize="14sp"
+            android:layout_marginBottom="30dp"
+            android:lineSpacingExtra="4dp" />
+
+        <!-- Headache -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Headache"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <RadioGroup
+            android:id="@+id/rgHeadache"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20px">
+
+            <RadioButton android:id="@+id/rbHeadache0" android:text="0" />
+            <RadioButton android:id="@+id/rbHeadache1" android:text="1" />
+            <RadioButton android:id="@+id/rbHeadache2" android:text="2" />
+            <RadioButton android:id="@+id/rbHeadache3" android:text="3" />
+            <RadioButton android:id="@+id/rbHeadache4" android:text="4" />
+            <RadioButton android:id="@+id/rbHeadache5" android:text="5" />
+        </RadioGroup>
+
+        <!-- Sore Throat -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sore Throat"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <RadioGroup
+            android:id="@+id/rgSoreThroat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20px">
+
+            <RadioButton android:id="@+id/rbSoreThroat0" android:text="0" />
+            <RadioButton android:id="@+id/rbSoreThroat1" android:text="1" />
+            <RadioButton android:id="@+id/rbSoreThroat2" android:text="2" />
+            <RadioButton android:id="@+id/rbSoreThroat3" android:text="3" />
+            <RadioButton android:id="@+id/rbSoreThroat4" android:text="4" />
+            <RadioButton android:id="@+id/rbSoreThroat5" android:text="5" />
+        </RadioGroup>
+
+        <!-- Fever -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fever"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <RadioGroup
+            android:id="@+id/rgFever"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20px">
+
+            <RadioButton android:id="@+id/rbFever0" android:text="0" />
+            <RadioButton android:id="@+id/rbFever1" android:text="1" />
+            <RadioButton android:id="@+id/rbFever2" android:text="2" />
+            <RadioButton android:id="@+id/rbFever3" android:text="3" />
+            <RadioButton android:id="@+id/rbFever4" android:text="4" />
+            <RadioButton android:id="@+id/rbFever5" android:text="5" />
+        </RadioGroup>
+
+        <!-- Muscle Ache -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Muscle Ache"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <RadioGroup
+            android:id="@+id/rgMuscleAche"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20px">
+
+            <RadioButton android:id="@+id/rbMuscleAche0" android:text="0" />
+            <RadioButton android:id="@+id/rbMuscleAche1" android:text="1" />
+            <RadioButton android:id="@+id/rbMuscleAche2" android:text="2" />
+            <RadioButton android:id="@+id/rbMuscleAche3" android:text="3" />
+            <RadioButton android:id="@+id/rbMuscleAche4" android:text="4" />
+            <RadioButton android:id="@+id/rbMuscleAche5" android:text="5" />
+        </RadioGroup>
+
+        <!-- Loss of Taste -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Loss of Taste"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <RadioGroup
+            android:id="@+id/rgLossOfTaste"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20px">
+
+            <RadioButton android:id="@+id/rbLossOfTaste0" android:text="0" />
+            <RadioButton android:id="@+id/rbLossOfTaste1" android:text="1" />
+            <RadioButton android:id="@+id/rbLossOfTaste2" android:text="2" />
+            <RadioButton android:id="@+id/rbLossOfTaste3" android:text="3" />
+            <RadioButton android:id="@+id/rbLossOfTaste4" android:text="4" />
+            <RadioButton android:id="@+id/rbLossOfTaste5" android:text="5" />
+        </RadioGroup>
+
+        <!-- Cough -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cough"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <RadioGroup
+            android:id="@+id/rgCough"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20px">
+
+            <RadioButton android:id="@+id/rbCough0" android:text="0" />
+            <RadioButton android:id="@+id/rbCough1" android:text="1" />
+            <RadioButton android:id="@+id/rbCough2" android:text="2" />
+            <RadioButton android:id="@+id/rbCough3" android:text="3" />
+            <RadioButton android:id="@+id/rbCough4" android:text="4" />
+            <RadioButton android:id="@+id/rbCough5" android:text="5" />
+        </RadioGroup>
+
+        <!-- Shortness of Breath -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Shortness of Breath"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <RadioGroup
+            android:id="@+id/rgShortnessOfBreath"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20px">
+
+            <RadioButton android:id="@+id/rbShortnessOfBreath0" android:text="0" />
+            <RadioButton android:id="@+id/rbShortnessOfBreath1" android:text="1" />
+            <RadioButton android:id="@+id/rbShortnessOfBreath2" android:text="2" />
+            <RadioButton android:id="@+id/rbShortnessOfBreath3" android:text="3" />
+            <RadioButton android:id="@+id/rbShortnessOfBreath4" android:text="4" />
+            <RadioButton android:id="@+id/rbShortnessOfBreath5" android:text="5" />
+        </RadioGroup>
+
+        <!-- Fatigue -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fatigue"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <RadioGroup
+            android:id="@+id/rgFatigue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="30px">
+
+            <RadioButton android:id="@+id/rbFatigue0" android:text="0" />
+            <RadioButton android:id="@+id/rbFatigue1" android:text="1" />
+            <RadioButton android:id="@+id/rbFatigue2" android:text="2" />
+            <RadioButton android:id="@+id/rbFatigue3" android:text="3" />
+            <RadioButton android:id="@+id/rbFatigue4" android:text="4" />
+            <RadioButton android:id="@+id/rbFatigue5" android:text="5" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btnUploadSymptoms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="UPLOAD SYMPTOMS"
+            android:textSize="16sp"
+            android:background="#4CAF50"
+            android:textColor="#FFFFFF"
+            android:elevation="4dp" />
+
+    </LinearLayout>
+</ScrollView>

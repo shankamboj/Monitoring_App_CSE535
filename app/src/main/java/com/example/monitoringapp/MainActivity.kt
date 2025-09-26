@@ -52,6 +52,10 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun deleteAllData() {
+        val dbHelper = DatabaseHelper(this)
+        val db = dbHelper.writableDatabase
+        db.delete(DatabaseHelper.TABLE_RECORDS, null, null)
+        db.close()
         Toast.makeText(this, "All data deleted successfully", Toast.LENGTH_SHORT).show()
     }
 }
