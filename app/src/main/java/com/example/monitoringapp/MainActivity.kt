@@ -14,52 +14,40 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Create UI programmatically
-        val layout = LinearLayout(this).apply {
+        val layout=LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
-            setPadding(100, 100, 100, 100)
+            setPadding(99, 99, 99, 98)
         }
 
-
-
-        val btnRecordData = Button(this).apply {
-            text = "Record health data"
-            setPadding(0, 50, 0, 50)
+        val btnRecordData=Button(this).apply {
+            text="Record health data"
+            setPadding(1, 49, 1, 49)
         }
         layout.addView(btnRecordData)
 
-        val btnDeleteData = Button(this).apply {
-            text = "Delete all recorded data"
-            setPadding(0, 50, 0, 50)
+        var btnDel=Button(this).apply {
+            text="Delete all recorded data"
+            setPadding(1, 49, 1, 49)
         }
-        layout.addView(btnDeleteData)
+        layout.addView(btnDel)
 
-        val title = TextView(this).apply {
-            text = "Health Monitor"
-            textSize = 28f
-            setPadding(0, 0, 0, 100)
-        }
-        layout.setBackgroundColor(Color.parseColor("#FFBFB5"));
-        layout.addView(title)
+        layout.setBackgroundColor(Color.parseColor("#FFBFB4"));
+        layout.addView(TextView(this).apply {
+            text="Health Monitor"
+            textSize=27f
+            setPadding(2, 2, 2, 98)
+        })
 
         setContentView(layout)
+        btnDel.setOnClickListener {
+            val db=DatabaseHelper(this).writableDatabase
+            db.delete(DatabaseHelper.TABLE_RECORDS, null, null)
+            db.close()
+            Toast.makeText(this, "Past data cleaned fully", Toast.LENGTH_SHORT).show()
 
-        // Set click listeners
+        }
         btnRecordData.setOnClickListener {
-            val intent = Intent(this, VitalSignsActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, VitalSignsActivity::class.java))
         }
-
-        btnDeleteData.setOnClickListener {
-            deleteAllData()
-        }
-    }
-
-    private fun deleteAllData() {
-        val dbHelper = DatabaseHelper(this)
-        val db = dbHelper.writableDatabase
-        db.delete(DatabaseHelper.TABLE_RECORDS, null, null)
-        db.close()
-        Toast.makeText(this, "All data deleted successfully", Toast.LENGTH_SHORT).show()
     }
 }
