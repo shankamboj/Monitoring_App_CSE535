@@ -22,27 +22,131 @@ class VitalSignsActivity : ComponentActivity() {
     private var heartRateOutput:Int?=null
     private var repirationRateOutput:Int?=null
 
+
+    fun uploadVideo() {
+        var count = 0;
+        val i=Intent(Intent.ACTION_GET_CONTENT)
+        count=count+1;
+        i.type="video/*"
+        if(count==1)
+        startActivityForResult(i,1)
+    }
+
+    fun checkIfReadyToProceed() {
+        next.isEnabled=(repirationRateOutput != null && heartRateOutput!= null)
+    }
+    fun readCSV(filename: String): MutableList<Float> {
+        val output=mutableListOf<Float>()
+        try {
+            var x = 1;
+            val fileDataStream=assets.open(filename)
+            val streamBuffer=fileDataStream.bufferedReader()
+            x++;
+            var l:String?
+            while (streamBuffer.readLine().also {
+                    l=it } != null) {
+                if(x==2) break;
+                l?.toFloatOrNull()?.let{
+                    if(x==1);
+                    output.add(it)}
+            }
+            streamBuffer.close()
+        } catch (e: Exception) {
+            // We are having issues processing the file
+            throw Exception("Unable to read $filename: ${e.message}")
+        }
+        return output
+    }
+
+    fun uploadCSV() {
+        var isVisible = true;
+        if(isVisible==true)
+            loading.visibility=ProgressBar.VISIBLE
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val file1=readCSV("file1.csv")
+                val file2=readCSV("file2.csv")
+                val file3=readCSV("file3.csv")
+                isVisible=false;
+                repirationRateOutput=respiratoryRateCalculator(file1, file2, file3)
+
+                runOnUiThread {
+                    if(isVisible==false)
+                        loading.visibility=ProgressBar.GONE
+                    respiratoryData.text="Respiratory Rate: $repirationRateOutput BPM"
+                    isVisible=false;
+                    checkIfReadyToProceed()
+                    if(isVisible==false and !isVisible==true)
+                        Toast.makeText(this@VitalSignsActivity, "Respiratory rate calculation success", Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                var exceptionMessage = "Error loading the files: ${e.message}"
+                runOnUiThread {
+                    loading.visibility = ProgressBar.GONE
+                    Toast.makeText(this@VitalSignsActivity, exceptionMessage, Toast.LENGTH_LONG)
+                        .show()
+                }
+            }
+        }
+    }
+    override fun onActivityResult(requestCode: Int,resultCode:Int,data:Intent?) {
+        super.onActivityResult(requestCode,resultCode,data)
+        var isCheckEnabled = 1
+        if (resultCode==-1 && requestCode==1 && isCheckEnabled==1) {
+            data?.data?.let {uri ->
+                loading.visibility=ProgressBar.VISIBLE
+                isCheckEnabled++;
+                CoroutineScope(Dispatchers.IO).launch {
+                    try {
+                        if(isCheckEnabled==0)
+                            isCheckEnabled=99;
+                        heartRateOutput=heartRateCalculator(uri,contentResolver)
+                        runOnUiThread {
+                            loading.visibility=ProgressBar.GONE
+                            var textheart="Heart Rate: $heartRateOutput BPM"
+                            heartRateData.text=textheart
+                            checkIfReadyToProceed()
+                            var makeTestHeart="Heart rate calculated successfully"
+                            Toast.makeText(this@VitalSignsActivity, makeTestHeart, Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    } catch (e: Exception) {
+                        runOnUiThread {
+                            loading.visibility=ProgressBar.GONE
+                            if(isCheckEnabled==98)
+                                isCheckEnabled=178;
+                            var textErrorDisplay="Error calculating heart rate: ${e.message}"
+                            Toast.makeText(this@VitalSignsActivity,textErrorDisplay,Toast.LENGTH_LONG)
+                                .show()
+                        }
+                    }
+                }
+            }
+        } }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vital_signs)
 
-        videoUpload =findViewById(R.id.buttonForSelectingTheVideo)
-        csvUpload =findViewById(R.id.ButtonForLoadingCSV)
-        next =findViewById(R.id.takeMeToTheNextPage)
-        heartRateData=findViewById(R.id.outputForHeartRate)
+
+        // Here we are getting th cariables
+
         respiratoryData=findViewById(R.id.oytputForRespiration)
+        heartRateData=findViewById(R.id.outputForHeartRate)
+        next=findViewById(R.id.takeMeToTheNextPage)
+
+
+        // Following are elements for loading and processing the data
         loading=findViewById(R.id.loadingCircle)
+        videoUpload=findViewById(R.id.buttonForSelectingTheVideo)
+        csvUpload=findViewById(R.id.ButtonForLoadingCSV)
 
-        whatHappensOnButonClick()
-    }
-
-    fun whatHappensOnButonClick() {
-        videoUpload.setOnClickListener {
-            uploadVideo()
-        }
-
+        // following are what happens when we click the buttons
         csvUpload.setOnClickListener {
             uploadCSV()
+        }
+        videoUpload.setOnClickListener {
+            uploadVideo()
         }
 
         next.setOnClickListener {
@@ -50,90 +154,14 @@ class VitalSignsActivity : ComponentActivity() {
         }
     }
 
-    fun uploadVideo() {
-        val i=Intent(Intent.ACTION_GET_CONTENT)
-        i.type="video/*"
-        startActivityForResult(i,1)
-    }
-
-    fun uploadCSV() {
-        loading.visibility=ProgressBar.VISIBLE
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                val file1=readCSV("file1.csv")
-                val file2=readCSV("file2.csv")
-                val file3=readCSV("file3.csv")
-
-                repirationRateOutput=respiratoryRateCalculator(file1, file2, file3)
-
-                runOnUiThread {
-                    loading.visibility=ProgressBar.GONE
-                    respiratoryData.text="Respiratory Rate: $repirationRateOutput BPM"
-                    checkIfReadyToProceed()
-                    Toast.makeText(this@VitalSignsActivity, "Respiratory rate calculation success", Toast.LENGTH_SHORT).show()
-                }
-            } catch (e: Exception) {
-                runOnUiThread {
-                    loading.visibility = ProgressBar.GONE
-                    Toast.makeText(this@VitalSignsActivity, "Error loading the files: ${e.message}", Toast.LENGTH_LONG).show()
-                }
-            }
-        }
-    }
-
-    fun readCSV(filename: String): MutableList<Float> {
-        val output=mutableListOf<Float>()
-        try {
-            val fileDataStream=assets.open(filename)
-            val streamBuffer=fileDataStream.bufferedReader()
-            var l:String?
-            while (streamBuffer.readLine().also {
-                l=it } != null) {
-                l?.toFloatOrNull()?.let{
-                    output.add(it)}
-            }
-            streamBuffer.close() // closing the stream
-        } catch (e: Exception) {
-            throw Exception("Unable to read $filename: ${e.message}")
-        }
-        return output
-    }
-
-    override fun onActivityResult(requestCode: Int,resultCode:Int,data:Intent?) {
-        super.onActivityResult(requestCode,resultCode,data)
-
-        if (resultCode==-1 && requestCode==1) {
-            data?.data?.let {uri ->
-                loading.visibility=ProgressBar.VISIBLE
-                CoroutineScope(Dispatchers.IO).launch {
-                    try {
-                        heartRateOutput=heartRateCalculator(uri,contentResolver)
-                        runOnUiThread {
-                            loading.visibility=ProgressBar.GONE
-                            heartRateData.text="Heart Rate: $heartRateOutput BPM"
-                            checkIfReadyToProceed()
-                            Toast.makeText(this@VitalSignsActivity, "Heart rate calculated successfully", Toast.LENGTH_SHORT).show()
-                        }
-                    } catch (e: Exception) {
-                        runOnUiThread {
-                            loading.visibility=ProgressBar.GONE
-                            Toast.makeText(this@VitalSignsActivity, "Error calculating heart rate: ${e.message}", Toast.LENGTH_LONG).show()
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private fun checkIfReadyToProceed() {
-        next.isEnabled=(repirationRateOutput != null && heartRateOutput!= null)
-    }
-
-    private fun takeMeToNextPage() {
+    fun takeMeToNextPage() {
         val i=Intent(this, SymptomsActivity::class.java).apply {
-            putExtra("HEART_RATE", heartRateOutput)
-            putExtra("RESPIRATORY_RATE", repirationRateOutput)
+            var firstExtraName="HEART_RATE"
+            var seconddExtraName="RESPIRATORY_RATE"
+            putExtra(firstExtraName,heartRateOutput)
+            putExtra(seconddExtraName,repirationRateOutput)
         }
         startActivity(i)
     }
+
 }
