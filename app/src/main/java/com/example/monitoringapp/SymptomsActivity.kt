@@ -101,17 +101,17 @@ class SymptomsActivity : ComponentActivity() {
         ).show()
 
         val values = ContentValues().apply {
-            put(DatabaseHelper.COLUMN_HEART_RATE, heartRate)
-            put(DatabaseHelper.COLUMN_RESPIRATORY_RATE, respiratoryRate)
+            put(DatabaseHelper.heart_rate, heartRate)
+            put(DatabaseHelper.respiratory_rate, respiratoryRate)
 
             // Store all symptom ratings
-            put(DatabaseHelper.COLUMN_HEADACHE, headacheRating)
-            put(DatabaseHelper.COLUMN_SORE_THROAT, soreThroatRating)
-            put(DatabaseHelper.COLUMN_FEVER, feverRating)
-            put(DatabaseHelper.COLUMN_MUSCLE_ACHE, muscleAcheRating)
-            put(DatabaseHelper.COLUMN_LOSS_OF_TASTE, lossOfTasteRating)
-            put(DatabaseHelper.COLUMN_COUGH, coughRating)
-            put(DatabaseHelper.COLUMN_SHORTNESS_OF_BREATH, shortnessOfBreathRating)
+            put(DatabaseHelper.headache, headacheRating)
+            put(DatabaseHelper.sore_throat, soreThroatRating)
+            put(DatabaseHelper.fever, feverRating)
+            put(DatabaseHelper.muscle_ache, muscleAcheRating)
+            put(DatabaseHelper.loss_of_taste, lossOfTasteRating)
+            put(DatabaseHelper.cough, coughRating)
+            put(DatabaseHelper.shortness_of_breath, shortnessOfBreathRating)
             put(DatabaseHelper.COLUMN_FATIGUE, fatigueRating)
         }
 
