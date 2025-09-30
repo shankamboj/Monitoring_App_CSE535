@@ -1,13 +1,12 @@
 package com.example.monitoringapp
 
 import android.content.Intent
-import androidx.activity.ComponentActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
-import android.widget.LinearLayout
+import androidx.activity.ComponentActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -30,88 +29,16 @@ class VitalSignsActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_vital_signs)
 
-        // Create the UI programmatically instead of using XML
-        createUI()
+        btnSelectVideo = findViewById(R.id.btnSelectVideo)
+        btnLoadCSV = findViewById(R.id.btnLoadCSV)
+        btnNextToSymptoms = findViewById(R.id.btnNextToSymptoms)
+        tvHeartRateResult = findViewById(R.id.tvHeartRateResult)
+        tvRespiratoryRateResult = findViewById(R.id.tvRespiratoryRateResult)
+        progressBar = findViewById(R.id.progressBar)
 
         setupClickListeners()
-    }
-
-    private fun createUI() {
-        val layout = LinearLayout(this).apply {
-            orientation = LinearLayout.VERTICAL
-            setPadding(50, 50, 50, 50)
-        }
-
-        // Title
-        val title = TextView(this).apply {
-            text = "Vital Signs Monitoring"
-            textSize = 24f
-            setPadding(0, 0, 0, 50)
-        }
-        layout.addView(title)
-
-        // Heart Rate Section
-        val heartRateTitle = TextView(this).apply {
-            text = "Heart Rate Measurement"
-            textSize = 18f
-            setPadding(0, 0, 0, 20)
-        }
-        layout.addView(heartRateTitle)
-
-        btnSelectVideo = Button(this).apply {
-            text = "Select Heart Rate Video"
-            setPadding(0, 30, 0, 30)
-        }
-        layout.addView(btnSelectVideo)
-
-        tvHeartRateResult = TextView(this).apply {
-            text = "Heart Rate: Not measured"
-            textSize = 16f
-            setPadding(30, 30, 30, 30)
-            setBackgroundColor(0xFFE8F5E8.toInt())
-            setPadding(0, 20, 0, 50)
-        }
-        layout.addView(tvHeartRateResult)
-
-        // Respiratory Rate Section
-        val respRateTitle = TextView(this).apply {
-            text = "Respiratory Rate Measurement"
-            textSize = 18f
-            setPadding(0, 0, 0, 20)
-        }
-        layout.addView(respRateTitle)
-
-        btnLoadCSV = Button(this).apply {
-            text = "Load Respiratory Rate CSV Data"
-            setPadding(0, 30, 0, 30)
-        }
-        layout.addView(btnLoadCSV)
-
-        tvRespiratoryRateResult = TextView(this).apply {
-            text = "Respiratory Rate: Not measured"
-            textSize = 16f
-            setPadding(30, 30, 30, 30)
-            setBackgroundColor(0xFFFFF3E0.toInt())
-            setPadding(0, 20, 0, 50)
-        }
-        layout.addView(tvRespiratoryRateResult)
-
-        // Next Button
-        btnNextToSymptoms = Button(this).apply {
-            text = "Next: Symptoms Logging"
-            setPadding(0, 30, 0, 30)
-            isEnabled = false
-        }
-        layout.addView(btnNextToSymptoms)
-
-        // Progress Bar
-        progressBar = ProgressBar(this).apply {
-            visibility = ProgressBar.GONE
-        }
-        layout.addView(progressBar)
-
-        setContentView(layout)
     }
 
     private fun setupClickListeners() {
@@ -139,12 +66,10 @@ class VitalSignsActivity : ComponentActivity() {
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                // Read CSV files from assets
                 val accelX = readCSVFile("CSVBreatheX.csv")
                 val accelY = readCSVFile("CSVBreatheY.csv")
                 val accelZ = readCSVFile("CSVBreatheZ.csv")
 
-                // Calculate respiratory rate
                 respiratoryRate = respiratoryRateCalculator(accelX, accelY, accelZ)
 
                 runOnUiThread {
