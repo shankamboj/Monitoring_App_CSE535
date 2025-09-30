@@ -40,18 +40,13 @@
             android:orientation="horizontal"
             android:layout_marginBottom="19px">
 
-            <RadioButton
-                android:id="@+id/rbShortnessOfBreath0" android:text="0" />
-            <RadioButton
-                android:id="@+id/rbShortnessOfBreath1" android:text="1" />
-            <RadioButton
-                android:id="@+id/rbShortnessOfBreath2" android:text="2" />
-            <RadioButton
-                android:id="@+id/rbShortnessOfBreath3" android:text="3" />
-            <RadioButton
-                android:id="@+id/rbShortnessOfBreath4" android:text="4" />
-            <RadioButton
-                android:id="@+id/rbShortnessOfBreath5" android:text="5" />
+            <RadioButton android:text="0" />
+            <RadioButton android:text="1" />
+            <RadioButton android:text="2" />
+            <RadioButton android:text="3" />
+            <RadioButton android:text="4" />
+            <RadioButton android:text="5" />
+
         </RadioGroup>
 
         <TextView
@@ -69,19 +64,13 @@
             android:orientation="horizontal"
             android:layout_marginBottom="19px"
             >
+            <RadioButton android:text="0" />
+            <RadioButton android:text="1" />
+            <RadioButton android:text="2" />
+            <RadioButton android:text="3" />
+            <RadioButton android:text="4" />
+            <RadioButton android:text="5" />
 
-            <RadioButton
-                android:id="@+id/rbCough0" android:text="0" />
-            <RadioButton
-                android:id="@+id/rbCough1" android:text="1" />
-            <RadioButton
-                android:id="@+id/rbCough2" android:text="2" />
-            <RadioButton
-                android:id="@+id/rbCough3" android:text="3" />
-            <RadioButton
-                android:id="@+id/rbCough4" android:text="4" />
-            <RadioButton
-                android:id="@+id/rbCough5" android:text="5" />
         </RadioGroup>
 
         <TextView
@@ -100,18 +89,13 @@
             android:layout_width="348dp"
             >
 
-            <RadioButton
-                android:id="@+id/rbSoreThroat0" android:text="0" />
-            <RadioButton
-                android:id="@+id/rbSoreThroat1" android:text="1" />
-            <RadioButton
-                android:id="@+id/rbSoreThroat2" android:text="2" />
-            <RadioButton
-                android:id="@+id/rbSoreThroat3" android:text="3" />
-            <RadioButton
-                android:id="@+id/rbSoreThroat4" android:text="4" />
-            <RadioButton
-                android:id="@+id/rbSoreThroat5" android:text="5" />
+            <RadioButton android:text="0" />
+            <RadioButton android:text="1" />
+            <RadioButton android:text="2" />
+            <RadioButton android:text="3" />
+            <RadioButton android:text="4" />
+            <RadioButton android:text="5" />
+
         </RadioGroup>
         <TextView
             android:textSize="16sp"
@@ -128,18 +112,13 @@
             android:orientation="horizontal"
             >
 
-            <RadioButton
-                android:id="@+id/rbLossOfTaste0" android:text="0" />
-            <RadioButton
-                android:id="@+id/rbLossOfTaste1" android:text="1" />
-            <RadioButton
-                android:id="@+id/rbLossOfTaste2" android:text="2" />
-            <RadioButton
-                android:id="@+id/rbLossOfTaste3" android:text="3" />
-            <RadioButton
-                android:id="@+id/rbLossOfTaste4" android:text="4" />
-            <RadioButton
-                android:id="@+id/rbLossOfTaste5" android:text="5" />
+            <RadioButton android:text="0" />
+            <RadioButton android:text="1" />
+            <RadioButton android:text="2" />
+            <RadioButton android:text="3" />
+            <RadioButton android:text="4" />
+            <RadioButton android:text="5" />
+
         </RadioGroup>
 
         <TextView
@@ -156,18 +135,13 @@
             android:layout_width="348dp"
             android:layout_height="23dp">
 
-            <RadioButton
-                android:id="@+id/rbFatigue0" android:text="0" />
-            <RadioButton
-                android:id="@+id/rbFatigue1" android:text="1" />
-            <RadioButton
-                android:id="@+id/rbFatigue2" android:text="2" />
-            <RadioButton
-                android:id="@+id/rbFatigue3" android:text="3" />
-            <RadioButton
-                android:id="@+id/rbFatigue4" android:text="4" />
-            <RadioButton
-                android:id="@+id/rbFatigue5" android:text="5" />
+            <RadioButton android:text="0" />
+            <RadioButton android:text="1" />
+            <RadioButton android:text="2" />
+            <RadioButton android:text="3" />
+            <RadioButton android:text="4" />
+            <RadioButton android:text="5" />
+
         </RadioGroup>
         <TextView
             android:textStyle="bold"
@@ -184,18 +158,13 @@
             android:layout_height="24dp"
             android:id="@+id/rgFever">
 
-            <RadioButton
-                android:id="@+id/rbFever0" android:text="0" />
-            <RadioButton
-                android:id="@+id/rbFever1" android:text="1" />
-            <RadioButton
-                android:id="@+id/rbFever2" android:text="2" />
-            <RadioButton
-                android:id="@+id/rbFever3" android:text="3" />
-            <RadioButton
-                android:id="@+id/rbFever4" android:text="4" />
-            <RadioButton
-                android:id="@+id/rbFever5" android:text="5" />
+            <RadioButton android:text="0" />
+            <RadioButton android:text="1" />
+            <RadioButton android:text="2" />
+            <RadioButton android:text="3" />
+            <RadioButton android:text="4" />
+            <RadioButton android:text="5" />
+
         </RadioGroup>
 
 
@@ -213,18 +182,13 @@
             android:layout_width="348dp"
             android:id="@+id/rgHeadache">
 
-            <RadioButton
-                android:id="@+id/rbHeadache0" android:text="0" />
-            <RadioButton
-                android:id="@+id/rbHeadache1" android:text="1" />
-            <RadioButton
-                android:id="@+id/rbHeadache2" android:text="2" />
-            <RadioButton
-                android:id="@+id/rbHeadache3" android:text="3" />
-            <RadioButton
-                android:id="@+id/rbHeadache4" android:text="4" />
-            <RadioButton
-                android:id="@+id/rbHeadache5" android:text="5" />
+            <RadioButton android:text="0" />
+            <RadioButton android:text="1" />
+            <RadioButton android:text="2" />
+            <RadioButton android:text="3" />
+            <RadioButton android:text="4" />
+            <RadioButton android:text="5" />
+
         </RadioGroup>
 
         <TextView
@@ -242,18 +206,13 @@
             android:layout_height="23dp"
             >
 
-            <RadioButton
-                android:id="@+id/rbMuscleAche0" android:text="0" />
-            <RadioButton
-                android:id="@+id/rbMuscleAche1" android:text="1" />
-            <RadioButton
-                android:id="@+id/rbMuscleAche2" android:text="2" />
-            <RadioButton
-                android:id="@+id/rbMuscleAche3" android:text="3" />
-            <RadioButton
-                android:id="@+id/rbMuscleAche4" android:text="4" />
-            <RadioButton
-                android:id="@+id/rbMuscleAche5" android:text="5" />
+            <RadioButton android:text="0" />
+            <RadioButton android:text="1" />
+            <RadioButton android:text="2" />
+            <RadioButton android:text="3" />
+            <RadioButton android:text="4" />
+            <RadioButton android:text="5" />
+
         </RadioGroup>
 
         <Button
