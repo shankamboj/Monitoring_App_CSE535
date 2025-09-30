@@ -7,79 +7,79 @@
     android:background="#FFBFB5">
 
     <TextView
-        android:layout_width="350dp"
-        android:layout_height="41dp"
-        android:text="Medical Monitoring"
-        android:textSize="29sp"
+        android:textColor="#2196F2"
         android:textStyle="bold"
-        android:textColor="#2196F2" />
-
-    <!-- Heart Rate Section -->
-    <TextView
-        android:layout_width="350dp"
+        android:textSize="29sp"
+        android:text="Medical Monitoring"
         android:layout_height="41dp"
-        android:text="Heart Rate"
+        android:layout_width="350dp" />
+
+    <TextView
+        android:textStyle="bold"
         android:textSize="19sp"
-        android:textStyle="bold" />
+        android:text="Heart Rate"
+        android:layout_height="41dp"
+        android:layout_width="350dp" />
 
     <Button
-        android:id="@+id/btnSelectVideo"
-        android:layout_width="350dp"
-        android:layout_height="41dp"
-        android:text="Select Blood Video"
+        android:textColor="#FFFFF4"
         android:background="#4CAF51"
-        android:textColor="#FFFFF4" />
+        android:text="Select Blood Video"
+        android:layout_height="41dp"
+        android:layout_width="350dp"
+        android:id="@+id/btnSelectVideo" />
 
     <TextView
-        android:id="@+id/tvHeartRateResult"
-        android:layout_width="350dp"
-        android:layout_height="41dp"
-        android:text="Heart Rate: ?"
-        android:layout_marginBottom="32dp"
-        android:textSize="17sp"
+        android:background="#E8F5E8"
         android:padding="09dp"
-        android:background="#E8F5E8" />
+        android:textSize="17sp"
+        android:layout_marginBottom="32dp"
+        android:text="Heart Rate: ?"
+        android:layout_height="41dp"
+        android:layout_width="350dp"
+        android:id="@+id/tvHeartRateResult" />
 
     <!-- Respiratory Rate Section -->
     <TextView
-        android:layout_width="350dp"
-        android:layout_height="41dp"
-        android:text="Respiratory Rate Monitoring"
+        android:textStyle="bold"
         android:textSize="19sp"
-        android:textStyle="bold"/>
+        android:text="Respiratory Rate Monitoring"
+        android:layout_height="41dp"
+        android:layout_width="350dp" />
 
     <Button
-        android:id="@+id/btnLoadCSV"
-        android:layout_width="350dp"
-        android:layout_height="41dp"
-        android:text="Load Respiratory Rate CSV Data"
+        android:textColor="#FFFFF4"
         android:background="#FF9802"
-        android:textColor="#FFFFF4" />
+        android:text="Load Respiratory Rate CSV Data"
+        android:layout_height="41dp"
+        android:layout_width="350dp"
+        android:id="@+id/btnLoadCSV" />
 
     <TextView
-        android:id="@+id/tvRespiratoryRateResult"
-        android:layout_width="350dp"
-        android:layout_height="41dp"
-        android:text="Respiratory Rate: Not measured"
-        android:textSize="17sp"
+        android:background="#FFF6E4"
         android:padding="09dp"
-        android:background="#FFF6E4" />
+        android:textSize="17sp"
+        android:text="Respiratory Rate: Not measured"
+        android:layout_height="41dp"
+        android:layout_width="350dp"
+        android:id="@+id/tvRespiratoryRateResult" />
 
     <Button
-        android:id="@+id/btnNextToSymptoms"
-        android:layout_width="350dp"
-        android:layout_height="41dp"
-        android:text="Next: Manual Symptoms Logging"
-        android:layout_marginTop="20dp"
-        android:enabled="false"
+        android:textColor="#FFFFF4"
         android:background="#2296F3"
-        android:textColor="#FFFFF4" />
+        android:enabled="false"
+        android:layout_marginTop="20dp"
+        android:text="Next: Manual Symptoms Logging"
+        android:layout_height="41dp"
+        android:layout_width="350dp"
+        android:id="@+id/btnNextToSymptoms" />
 
     <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:visibility="gone"
         android:layout_gravity="center_horizontal"
-        android:visibility="gone" />
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/progressBar" />
+
 
 </LinearLayout>
