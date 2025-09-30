@@ -1,14 +1,25 @@
 Q1: Specifications for Health-dev framework:
 
-1. Data collection and sensor: a. Describe on what all sensers to use ( camera, mic, motion sensor, vibration etc ). Describe on how to use these sensors. Ex - Use mic for recording heart beat sound, use camera for recording the blood color
-2. User screen a. Explain on what all features should a user see on it's device b. Explain on how these features will be used, what buttons will do what kind of functioning when clicked. Explain what kind of output should be shown to user after processing is done
-3. Hardware to use for processing/storage: a. Describe what hardware devices are available and can be used for each specific type of processing. Describe all types of storage devices available (Hard disc, memory card, etc) which can be used to store the data.
-4. Data and processing flow. Describe what the expected flow is. For example -> First take input, clean data, pre-process, do the expected computation and then show it to user output screen.
+1 . Data collection and sensor:
+    a. Describe on what all sensers to use ( camera, mic, motion sensor, vibration etc ).
+    b. Describe on how to use these sensors. Ex - Use mic for recording heart beat sound, use camera for recording the blood color
+2 . User screen 
+    a. Explain on what all features should a user see on it's device 
+    b. Explain on how these features will be used, what buttons will do what kind of functioning when clicked. Explain what kind of output should be shown to user after processing is done
+3 . Hardware to use for processing/storage: 
+    a. Describe what hardware devices are available and can be used for each specific type of processing. 
+    b. Describe all types of storage devices available (Hard disc, memory card, etc) which can be used to store the data.
+4 . Data and processing flow. Describe what the expected flow is. For example -> First take input, clean data, pre-process, do the expected computation and then show it to user output screen.
+5 . Describe the type of user: This part is very important for the development of the mobile application. We should hjave details on what are the users for the app we are targetting. Applicaiton can be varied on the basis of the user. For example - for a non technical user we should keep application very simple, clean and easy to use with more convenient user interface.
 
 Q2: Using bHealthy
 
-1. Build new app: a. Use data from bHealthy b. Combine it with data stored in database in project 1. Find the regular pattern like monthly headaches, fever during specific weather time and temperature. Send alerts to user to take precautions
-2. Understand the regular health issues of the user. Over the time use all the data from different sources and observe user symptoms. Use this data to predict the user's upcoming health issues.
+1 . Build new app: 
+    a. Use data from bHealthy 
+    b. Combine it with data stored in database in project 1. Find the regular pattern like monthly headaches, fever during specific weather time and temperature. Send alerts to user to take precautions
+2 . Understand the regular health issues of the user. Over the time use all the data from different sources and observe user symptoms. Use this data to predict the user's upcoming health issues
+3 . We store use past medical details in the SQL databse.We can enhance this to link to other user medical data like user medical history, alergies, medicines used etc. We can combine data from multiple different sources and types and aggregate them to find the more accurate user medical analysis. This will help us to give better feedback to the user and use this to further improve the medical health monitoring for the specific user.
+4 . Receive user feedbacks and improve apps: get user specific feedback on their thoughts on the application. Understand if they think that the output of the application matches with their expectations. If not, we can get more detailed user inputs like what is the expected outcome in the scenarios where they feel app needs i provements.Use that feedback to improve the  app functioning.
 
 Q3: Yes. My thoughts about this have changed. Before i used to think that mobile computing is only about developing mobile apps but now I have a wider context around the same.
 
