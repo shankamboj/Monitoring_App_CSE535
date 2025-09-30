@@ -7,126 +7,119 @@ import androidx.activity.ComponentActivity
 
 class SymptomsActivity : ComponentActivity() {
 
-    private lateinit var btnUploadSymptoms: Button
+    lateinit var btnUploadSymptoms:Button
+    lateinit var headacheInputs:RadioGroup
+    lateinit var throatDataInput:RadioGroup
+    lateinit var dataForFever:RadioGroup
+    lateinit var dataForMusclesPain:RadioGroup
+    lateinit var tasteDataInput:RadioGroup
+    lateinit var dataForCough:RadioGroup
+    lateinit var breatheData:RadioGroup
+    lateinit var fatigueData:RadioGroup
 
-    // Radio Groups for each symptom
-    private lateinit var rgHeadache: RadioGroup
-    private lateinit var rgSoreThroat: RadioGroup
-    private lateinit var rgFever: RadioGroup
-    private lateinit var rgMuscleAche: RadioGroup
-    private lateinit var rgLossOfTaste: RadioGroup
-    private lateinit var rgCough: RadioGroup
-    private lateinit var rgShortnessOfBreath: RadioGroup
-    private lateinit var rgFatigue: RadioGroup
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_symptoms)
 
-        initializeViews()
-        setupClickListeners()
-        setDefaultRatings()
+        assignVariablesForInpuTheirElement()
+        whatHappensOnClick()
+        byDefaultWeShouldTickRadioWith0Value()
     }
 
-    private fun initializeViews() {
+    fun assignVariablesForInpuTheirElement() {
         btnUploadSymptoms = findViewById(R.id.btnUploadSymptoms)
-
-        // Initialize all radio groups
-        rgHeadache = findViewById(R.id.rgHeadache)
-        rgSoreThroat = findViewById(R.id.rgSoreThroat)
-        rgFever = findViewById(R.id.rgFever)
-        rgMuscleAche = findViewById(R.id.rgMuscleAche)
-        rgLossOfTaste = findViewById(R.id.rgLossOfTaste)
-        rgCough = findViewById(R.id.rgCough)
-        rgShortnessOfBreath = findViewById(R.id.rgShortnessOfBreath)
-        rgFatigue = findViewById(R.id.rgFatigue)
+        headacheInputs=findViewById(R.id.rgHeadache)
+        throatDataInput=findViewById(R.id.rgSoreThroat)
+        dataForFever=findViewById(R.id.rgFever)
+        dataForMusclesPain=findViewById(R.id.rgMuscleAche)
+        tasteDataInput=findViewById(R.id.rgLossOfTaste)
+        dataForCough=findViewById(R.id.rgCough)
+        breatheData=findViewById(R.id.rgShortnessOfBreath)
+        fatigueData=findViewById(R.id.rgFatigue)
     }
 
-    private fun setupClickListeners() {
+    fun whatHappensOnClick() {
         btnUploadSymptoms.setOnClickListener {
-            uploadSymptomsToDatabase()
+            writeToDb()
         }
     }
 
-    private fun setDefaultRatings() {
-        // Set all ratings to 0 by default
-        val radioGroups = listOf(
-            rgHeadache, rgSoreThroat, rgFever, rgMuscleAche,
-            rgLossOfTaste, rgCough, rgShortnessOfBreath, rgFatigue
+    fun byDefaultWeShouldTickRadioWith0Value() {
+        val inputs=listOf(
+            headacheInputs,throatDataInput,dataForFever,dataForMusclesPain,
+            tasteDataInput,dataForCough,breatheData,fatigueData
         )
 
-        radioGroups.forEach { radioGroup ->
-            // Check the first radio button (rating 0) in each group
-            val firstChild = radioGroup.getChildAt(0) as? RadioButton
-            firstChild?.isChecked = true
+        inputs.forEach {i ->
+            (i.getChildAt(0) as? RadioButton)?.isChecked = true
         }
     }
 
-    private fun getRadioGroupRating(radioGroup: RadioGroup): Int {
-        for (i in 0 until radioGroup.childCount) {
-            val radioButton = radioGroup.getChildAt(i) as RadioButton
-            if (radioButton.isChecked) {
-                return radioButton.text.toString().toIntOrNull() ?: 0
+    fun fetchTheSelectedRating(rg: RadioGroup): Int {
+        for (i in 0 until rg.childCount) {
+            if ((rg.getChildAt(i) as RadioButton).isChecked) {
+                return (rg.getChildAt(i) as RadioButton).text.toString().toIntOrNull() ?: 0
             }
         }
-        return 0 // Default to 0 if nothing selected
+        return 0
     }
 
-    private fun uploadSymptomsToDatabase() {
-        val heartRate = intent.getIntExtra("HEART_RATE", 0)
-        val respiratoryRate = intent.getIntExtra("RESPIRATORY_RATE", 0)
+    fun writeToDb() {
+        var hrString = "HEART_RATE";
+        var rrString = "RESPIRATORY_RATE"
+        val hr=intent.getIntExtra(hrString, 0)
+        val rr=intent.getIntExtra(rrString, 0)
 
-        if (heartRate == 0 || respiratoryRate == 0) {
-            Toast.makeText(this, "Vital signs data missing!", Toast.LENGTH_SHORT).show()
+        if (rr == 0 || hr == 0) {
+            Toast.makeText(this, "Important data not founnd!", Toast.LENGTH_SHORT)
+                .show()
             return
         }
+        val interactWithDatabase=DatabaseHelper(this).writableDatabase
 
-        val dbHelper = DatabaseHelper(this)
-        val db = dbHelper.writableDatabase
+        val headacheRating=fetchTheSelectedRating(headacheInputs)
+        val soreThroatRating=fetchTheSelectedRating(throatDataInput)
+        val feverRating=fetchTheSelectedRating(dataForFever)
+        val muscleAcheRating=fetchTheSelectedRating(dataForMusclesPain)
+        val lossOfTasteRating=fetchTheSelectedRating(tasteDataInput)
+        val coughRating=fetchTheSelectedRating(dataForCough)
+        val shortnessOfBreathRating=fetchTheSelectedRating(breatheData)
+        val fatigueRating=fetchTheSelectedRating(fatigueData)
 
-        // Get ratings from all radio groups
-        val headacheRating = getRadioGroupRating(rgHeadache)
-        val soreThroatRating = getRadioGroupRating(rgSoreThroat)
-        val feverRating = getRadioGroupRating(rgFever)
-        val muscleAcheRating = getRadioGroupRating(rgMuscleAche)
-        val lossOfTasteRating = getRadioGroupRating(rgLossOfTaste)
-        val coughRating = getRadioGroupRating(rgCough)
-        val shortnessOfBreathRating = getRadioGroupRating(rgShortnessOfBreath)
-        val fatigueRating = getRadioGroupRating(rgFatigue)
+        var outputString="Headache = $headacheRating Sore Throat = $soreThroatRating, SoreThroat = $soreThroatRating"
 
-        // Debug: Show what ratings we're getting
         Toast.makeText(this,
-            "Ratings - Headache: $headacheRating, Fever: $feverRating, SoreThroat: $soreThroatRating",
+            outputString,
             Toast.LENGTH_LONG
         ).show()
 
-        val values = ContentValues().apply {
-            put(DatabaseHelper.heart_rate, heartRate)
-            put(DatabaseHelper.respiratory_rate, respiratoryRate)
+        val values=ContentValues().apply {
+            put(DatabaseHelper.heart_rate,hr)
+            put(DatabaseHelper.respiratory_rate,rr)
 
             // Store all symptom ratings
-            put(DatabaseHelper.headache, headacheRating)
-            put(DatabaseHelper.sore_throat, soreThroatRating)
-            put(DatabaseHelper.fever, feverRating)
-            put(DatabaseHelper.muscle_ache, muscleAcheRating)
-            put(DatabaseHelper.loss_of_taste, lossOfTasteRating)
-            put(DatabaseHelper.cough, coughRating)
-            put(DatabaseHelper.shortness_of_breath, shortnessOfBreathRating)
-            put(DatabaseHelper.COLUMN_FATIGUE, fatigueRating)
+            put(DatabaseHelper.headache,headacheRating)
+            put(DatabaseHelper.sore_throat,soreThroatRating)
+            put(DatabaseHelper.fever,feverRating)
+            put(DatabaseHelper.muscle_ache,muscleAcheRating)
+            put(DatabaseHelper.loss_of_taste,lossOfTasteRating)
+            put(DatabaseHelper.cough,coughRating)
+            put(DatabaseHelper.shortness_of_breath,shortnessOfBreathRating)
+            put(DatabaseHelper.COLUMN_FATIGUE,fatigueRating)
         }
 
         try {
-            val newRowId = db.insert(DatabaseHelper.TABLE_RECORDS, null, values)
-            if (newRowId != -1L) {
-                Toast.makeText(this, "Symptoms uploaded successfully!", Toast.LENGTH_SHORT).show()
-                finish() // Return to main activity
+            if (interactWithDatabase.insert(DatabaseHelper.TABLE_RECORDS, null,values)!=-1L) {
+                Toast.makeText(this, "Symptoms upload passed",Toast.LENGTH_SHORT).show()
+                finish()
             } else {
-                Toast.makeText(this, "Failed to upload symptoms", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Upload symptoms failed",Toast.LENGTH_SHORT).show()
             }
         } catch (e: Exception) {
-            Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Error: ${e.message}",Toast.LENGTH_LONG).show()
         } finally {
-            db.close()
+            interactWithDatabase.close()
         }
     }
 }
