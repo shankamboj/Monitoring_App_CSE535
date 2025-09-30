@@ -38,7 +38,7 @@ class VitalSignsActivity : ComponentActivity() {
     fun readCSV(filename: String): MutableList<Float> {
         val output=mutableListOf<Float>()
         try {
-            var x = 1;
+            var x = 1
             val fileDataStream=assets.open(filename)
             val streamBuffer=fileDataStream.bufferedReader()
             x++;
