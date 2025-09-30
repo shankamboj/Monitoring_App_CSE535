@@ -27,148 +27,31 @@
             android:id="@+id/tvInstructions"/>
 
         <TextView
-            android:textStyle="bold"
-            android:text="Give me headache rating"
-            android:textSize="15sp"
-            android:layout_height="25dp"
-            android:layout_width="348dp"/>
-
-        <RadioGroup
-            android:orientation="horizontal"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="19px"
-            android:layout_width="348dp"
-            android:id="@+id/rgHeadache">
-
-            <RadioButton
-                android:id="@+id/rbHeadache0" android:text="0" />
-            <RadioButton
-                android:id="@+id/rbHeadache1" android:text="1" />
-            <RadioButton
-                android:id="@+id/rbHeadache2" android:text="2" />
-            <RadioButton
-                android:id="@+id/rbHeadache3" android:text="3" />
-            <RadioButton
-                android:id="@+id/rbHeadache4" android:text="4" />
-            <RadioButton
-                android:id="@+id/rbHeadache5" android:text="5" />
-        </RadioGroup>
-
-        <TextView
-            android:text="Give me Sore Throat rating"
-            android:layout_height="25dp"
-            android:textStyle="bold"
-            android:textSize="15sp"
+            android:text="Give me Shortness of Breath ratings"
             android:layout_width="347dp"
-            />
-
-        <RadioGroup
-            android:layout_marginBottom="19px"
-            android:orientation="horizontal"
-            android:layout_height="25dp"
-            android:id="@+id/rgSoreThroat"
-            android:layout_width="348dp"
-            >
-
-            <RadioButton
-                android:id="@+id/rbSoreThroat0" android:text="0" />
-            <RadioButton
-                android:id="@+id/rbSoreThroat1" android:text="1" />
-            <RadioButton
-                android:id="@+id/rbSoreThroat2" android:text="2" />
-            <RadioButton
-                android:id="@+id/rbSoreThroat3" android:text="3" />
-            <RadioButton
-                android:id="@+id/rbSoreThroat4" android:text="4" />
-            <RadioButton
-                android:id="@+id/rbSoreThroat5" android:text="5" />
-        </RadioGroup>
-
-        <TextView
-            android:textStyle="bold"
-            android:text="Give me fever rating"
-            android:layout_height="24dp"
-            android:layout_width="346dp"
-            android:textSize="15sp"
-             />
-
-        <RadioGroup
-            android:orientation="horizontal"
-            android:layout_width="347dp"
-            android:layout_marginBottom="19px"
-            android:layout_height="24dp"
-            android:id="@+id/rgFever">
-
-            <RadioButton
-                android:id="@+id/rbFever0" android:text="0" />
-            <RadioButton
-                android:id="@+id/rbFever1" android:text="1" />
-            <RadioButton
-                android:id="@+id/rbFever2" android:text="2" />
-            <RadioButton
-                android:id="@+id/rbFever3" android:text="3" />
-            <RadioButton
-                android:id="@+id/rbFever4" android:text="4" />
-            <RadioButton
-                android:id="@+id/rbFever5" android:text="5" />
-        </RadioGroup>
-
-        <TextView
-            android:textSize="16sp"
-            android:layout_height="25dp"
-            android:layout_width="345dp"
-            android:textStyle="bold"
-            android:text="Give me muscle Ache rating number"/>
-
-        <RadioGroup
-            android:id="@+id/rgMuscleAche"
-            android:layout_marginBottom="19px"
-            android:layout_width="348dp"
-            android:orientation="horizontal"
-            android:layout_height="23dp"
-            >
-
-            <RadioButton
-                android:id="@+id/rbMuscleAche0" android:text="0" />
-            <RadioButton
-                android:id="@+id/rbMuscleAche1" android:text="1" />
-            <RadioButton
-                android:id="@+id/rbMuscleAche2" android:text="2" />
-            <RadioButton
-                android:id="@+id/rbMuscleAche3" android:text="3" />
-            <RadioButton
-                android:id="@+id/rbMuscleAche4" android:text="4" />
-            <RadioButton
-                android:id="@+id/rbMuscleAche5" android:text="5" />
-        </RadioGroup>
-
-        <TextView
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:text="Give me Loss of Taste ratings"
             android:layout_height="26dp"
-            android:layout_width="345dp"/>
+            android:textStyle="bold"
+            android:textSize="15sp"/>
 
         <RadioGroup
-            android:id="@+id/rgLossOfTaste"
             android:layout_height="25dp"
-            android:layout_width="347dp"
-            android:layout_marginBottom="19px"
+            android:layout_width="348dp"
+            android:id="@+id/rgShortnessOfBreath"
             android:orientation="horizontal"
-            >
+            android:layout_marginBottom="19px">
 
             <RadioButton
-                android:id="@+id/rbLossOfTaste0" android:text="0" />
+                android:id="@+id/rbShortnessOfBreath0" android:text="0" />
             <RadioButton
-                android:id="@+id/rbLossOfTaste1" android:text="1" />
+                android:id="@+id/rbShortnessOfBreath1" android:text="1" />
             <RadioButton
-                android:id="@+id/rbLossOfTaste2" android:text="2" />
+                android:id="@+id/rbShortnessOfBreath2" android:text="2" />
             <RadioButton
-                android:id="@+id/rbLossOfTaste3" android:text="3" />
+                android:id="@+id/rbShortnessOfBreath3" android:text="3" />
             <RadioButton
-                android:id="@+id/rbLossOfTaste4" android:text="4" />
+                android:id="@+id/rbShortnessOfBreath4" android:text="4" />
             <RadioButton
-                android:id="@+id/rbLossOfTaste5" android:text="5" />
+                android:id="@+id/rbShortnessOfBreath5" android:text="5" />
         </RadioGroup>
 
         <TextView
@@ -202,31 +85,61 @@
         </RadioGroup>
 
         <TextView
-            android:text="Give me Shortness of Breath ratings"
-            android:layout_width="347dp"
-            android:layout_height="26dp"
+            android:text="Give me Sore Throat rating"
+            android:layout_height="25dp"
             android:textStyle="bold"
-            android:textSize="15sp"/>
+            android:textSize="15sp"
+            android:layout_width="347dp"
+            />
 
         <RadioGroup
-            android:layout_height="25dp"
-            android:layout_width="348dp"
-            android:id="@+id/rgShortnessOfBreath"
+            android:layout_marginBottom="19px"
             android:orientation="horizontal"
-            android:layout_marginBottom="19px">
+            android:layout_height="25dp"
+            android:id="@+id/rgSoreThroat"
+            android:layout_width="348dp"
+            >
 
             <RadioButton
-                android:id="@+id/rbShortnessOfBreath0" android:text="0" />
+                android:id="@+id/rbSoreThroat0" android:text="0" />
             <RadioButton
-                android:id="@+id/rbShortnessOfBreath1" android:text="1" />
+                android:id="@+id/rbSoreThroat1" android:text="1" />
             <RadioButton
-                android:id="@+id/rbShortnessOfBreath2" android:text="2" />
+                android:id="@+id/rbSoreThroat2" android:text="2" />
             <RadioButton
-                android:id="@+id/rbShortnessOfBreath3" android:text="3" />
+                android:id="@+id/rbSoreThroat3" android:text="3" />
             <RadioButton
-                android:id="@+id/rbShortnessOfBreath4" android:text="4" />
+                android:id="@+id/rbSoreThroat4" android:text="4" />
             <RadioButton
-                android:id="@+id/rbShortnessOfBreath5" android:text="5" />
+                android:id="@+id/rbSoreThroat5" android:text="5" />
+        </RadioGroup>
+        <TextView
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="Give me Loss of Taste ratings"
+            android:layout_height="26dp"
+            android:layout_width="345dp"/>
+
+        <RadioGroup
+            android:id="@+id/rgLossOfTaste"
+            android:layout_height="25dp"
+            android:layout_width="347dp"
+            android:layout_marginBottom="19px"
+            android:orientation="horizontal"
+            >
+
+            <RadioButton
+                android:id="@+id/rbLossOfTaste0" android:text="0" />
+            <RadioButton
+                android:id="@+id/rbLossOfTaste1" android:text="1" />
+            <RadioButton
+                android:id="@+id/rbLossOfTaste2" android:text="2" />
+            <RadioButton
+                android:id="@+id/rbLossOfTaste3" android:text="3" />
+            <RadioButton
+                android:id="@+id/rbLossOfTaste4" android:text="4" />
+            <RadioButton
+                android:id="@+id/rbLossOfTaste5" android:text="5" />
         </RadioGroup>
 
         <TextView
@@ -255,6 +168,92 @@
                 android:id="@+id/rbFatigue4" android:text="4" />
             <RadioButton
                 android:id="@+id/rbFatigue5" android:text="5" />
+        </RadioGroup>
+        <TextView
+            android:textStyle="bold"
+            android:text="Give me fever rating"
+            android:layout_height="24dp"
+            android:layout_width="346dp"
+            android:textSize="15sp"
+            />
+
+        <RadioGroup
+            android:orientation="horizontal"
+            android:layout_width="347dp"
+            android:layout_marginBottom="19px"
+            android:layout_height="24dp"
+            android:id="@+id/rgFever">
+
+            <RadioButton
+                android:id="@+id/rbFever0" android:text="0" />
+            <RadioButton
+                android:id="@+id/rbFever1" android:text="1" />
+            <RadioButton
+                android:id="@+id/rbFever2" android:text="2" />
+            <RadioButton
+                android:id="@+id/rbFever3" android:text="3" />
+            <RadioButton
+                android:id="@+id/rbFever4" android:text="4" />
+            <RadioButton
+                android:id="@+id/rbFever5" android:text="5" />
+        </RadioGroup>
+
+
+        <TextView
+            android:textStyle="bold"
+            android:text="Give me headache rating"
+            android:textSize="15sp"
+            android:layout_height="25dp"
+            android:layout_width="348dp"/>
+
+        <RadioGroup
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="19px"
+            android:layout_width="348dp"
+            android:id="@+id/rgHeadache">
+
+            <RadioButton
+                android:id="@+id/rbHeadache0" android:text="0" />
+            <RadioButton
+                android:id="@+id/rbHeadache1" android:text="1" />
+            <RadioButton
+                android:id="@+id/rbHeadache2" android:text="2" />
+            <RadioButton
+                android:id="@+id/rbHeadache3" android:text="3" />
+            <RadioButton
+                android:id="@+id/rbHeadache4" android:text="4" />
+            <RadioButton
+                android:id="@+id/rbHeadache5" android:text="5" />
+        </RadioGroup>
+
+        <TextView
+            android:textSize="16sp"
+            android:layout_height="25dp"
+            android:layout_width="345dp"
+            android:textStyle="bold"
+            android:text="Give me muscle Ache rating number"/>
+
+        <RadioGroup
+            android:id="@+id/rgMuscleAche"
+            android:layout_marginBottom="19px"
+            android:layout_width="348dp"
+            android:orientation="horizontal"
+            android:layout_height="23dp"
+            >
+
+            <RadioButton
+                android:id="@+id/rbMuscleAche0" android:text="0" />
+            <RadioButton
+                android:id="@+id/rbMuscleAche1" android:text="1" />
+            <RadioButton
+                android:id="@+id/rbMuscleAche2" android:text="2" />
+            <RadioButton
+                android:id="@+id/rbMuscleAche3" android:text="3" />
+            <RadioButton
+                android:id="@+id/rbMuscleAche4" android:text="4" />
+            <RadioButton
+                android:id="@+id/rbMuscleAche5" android:text="5" />
         </RadioGroup>
 
         <Button
