@@ -13,116 +13,110 @@ import kotlinx.coroutines.launch
 
 class VitalSignsActivity : ComponentActivity() {
 
-    private lateinit var btnSelectVideo: Button
-    private lateinit var btnLoadCSV: Button
-    private lateinit var btnNextToSymptoms: Button
-    private lateinit var tvHeartRateResult: TextView
-    private lateinit var tvRespiratoryRateResult: TextView
-    private lateinit var progressBar: ProgressBar
-
-    private var heartRate: Int? = null
-    private var respiratoryRate: Int? = null
-
-    companion object {
-        private const val PICK_VIDEO_REQUEST = 1
-    }
+    private lateinit var videoUpload:Button
+    private lateinit var csvUpload:Button
+    private lateinit var next:Button
+    private lateinit var heartRateData:TextView
+    private lateinit var respiratoryData:TextView
+    private lateinit var loading:ProgressBar
+    private var heartRateOutput:Int?=null
+    private var repirationRateOutput:Int?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vital_signs)
 
-        btnSelectVideo = findViewById(R.id.btnSelectVideo)
-        btnLoadCSV = findViewById(R.id.btnLoadCSV)
-        btnNextToSymptoms = findViewById(R.id.btnNextToSymptoms)
-        tvHeartRateResult = findViewById(R.id.tvHeartRateResult)
-        tvRespiratoryRateResult = findViewById(R.id.tvRespiratoryRateResult)
-        progressBar = findViewById(R.id.progressBar)
+        videoUpload =findViewById(R.id.btnSelectVideo)
+        csvUpload =findViewById(R.id.btnLoadCSV)
+        next =findViewById(R.id.btnNextToSymptoms)
+        heartRateData=findViewById(R.id.tvHeartRateResult)
+        respiratoryData=findViewById(R.id.tvRespiratoryRateResult)
+        loading=findViewById(R.id.progressBar)
 
-        setupClickListeners()
+        whatHappensOnButonClick()
     }
 
-    private fun setupClickListeners() {
-        btnSelectVideo.setOnClickListener {
-            selectVideoFile()
+    fun whatHappensOnButonClick() {
+        videoUpload.setOnClickListener {
+            uploadVideo()
         }
 
-        btnLoadCSV.setOnClickListener {
-            loadCSVData()
+        csvUpload.setOnClickListener {
+            uploadCSV()
         }
 
-        btnNextToSymptoms.setOnClickListener {
-            navigateToSymptomsActivity()
+        next.setOnClickListener {
+            takeMeToNextPage()
         }
     }
 
-    private fun selectVideoFile() {
-        val intent = Intent(Intent.ACTION_GET_CONTENT)
-        intent.type = "video/*"
-        startActivityForResult(intent, PICK_VIDEO_REQUEST)
+    fun uploadVideo() {
+        val i=Intent(Intent.ACTION_GET_CONTENT)
+        i.type="video/*"
+        startActivityForResult(i,1)
     }
 
-    private fun loadCSVData() {
-        progressBar.visibility = ProgressBar.VISIBLE
-
+    fun uploadCSV() {
+        loading.visibility=ProgressBar.VISIBLE
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val accelX = readCSVFile("CSVBreatheX.csv")
-                val accelY = readCSVFile("CSVBreatheY.csv")
-                val accelZ = readCSVFile("CSVBreatheZ.csv")
+                val file1=readCSV("file1.csv")
+                val file2=readCSV("file2.csv")
+                val file3=readCSV("file3.csv")
 
-                respiratoryRate = respiratoryRateCalculator(accelX, accelY, accelZ)
+                repirationRateOutput=respiratoryRateCalculator(file1, file2, file3)
 
                 runOnUiThread {
-                    progressBar.visibility = ProgressBar.GONE
-                    tvRespiratoryRateResult.text = "Respiratory Rate: $respiratoryRate BPM"
+                    loading.visibility=ProgressBar.GONE
+                    respiratoryData.text="Respiratory Rate: $repirationRateOutput BPM"
                     checkIfReadyToProceed()
-                    Toast.makeText(this@VitalSignsActivity, "Respiratory rate calculated successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@VitalSignsActivity, "Respiratory rate calculation success", Toast.LENGTH_SHORT).show()
                 }
             } catch (e: Exception) {
                 runOnUiThread {
-                    progressBar.visibility = ProgressBar.GONE
-                    Toast.makeText(this@VitalSignsActivity, "Error loading CSV files: ${e.message}", Toast.LENGTH_LONG).show()
+                    loading.visibility = ProgressBar.GONE
+                    Toast.makeText(this@VitalSignsActivity, "Error loading the files: ${e.message}", Toast.LENGTH_LONG).show()
                 }
             }
         }
     }
 
-    private fun readCSVFile(filename: String): MutableList<Float> {
-        val values = mutableListOf<Float>()
+    fun readCSV(filename: String): MutableList<Float> {
+        val output=mutableListOf<Float>()
         try {
-            val inputStream = assets.open(filename)
-            val reader = inputStream.bufferedReader()
-            var line: String?
-            while (reader.readLine().also { line = it } != null) {
-                line?.toFloatOrNull()?.let { values.add(it) }
+            val fileDataStream=assets.open(filename)
+            val streamBuffer=fileDataStream.bufferedReader()
+            var l:String?
+            while (streamBuffer.readLine().also {
+                l=it } != null) {
+                l?.toFloatOrNull()?.let{
+                    output.add(it)}
             }
-            reader.close()
+            streamBuffer.close() // closing the stream
         } catch (e: Exception) {
-            throw Exception("Failed to read $filename: ${e.message}")
+            throw Exception("Unable to read $filename: ${e.message}")
         }
-        return values
+        return output
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
+    override fun onActivityResult(requestCode: Int,resultCode:Int,data:Intent?) {
+        super.onActivityResult(requestCode,resultCode,data)
 
-        if (requestCode == PICK_VIDEO_REQUEST && resultCode == RESULT_OK) {
-            data?.data?.let { videoUri ->
-                progressBar.visibility = ProgressBar.VISIBLE
-
+        if (resultCode==-1 && requestCode==1) {
+            data?.data?.let {uri ->
+                loading.visibility=ProgressBar.VISIBLE
                 CoroutineScope(Dispatchers.IO).launch {
                     try {
-                        heartRate = heartRateCalculator(videoUri, contentResolver)
-
+                        heartRateOutput=heartRateCalculator(uri,contentResolver)
                         runOnUiThread {
-                            progressBar.visibility = ProgressBar.GONE
-                            tvHeartRateResult.text = "Heart Rate: $heartRate BPM"
+                            loading.visibility=ProgressBar.GONE
+                            heartRateData.text="Heart Rate: $heartRateOutput BPM"
                             checkIfReadyToProceed()
                             Toast.makeText(this@VitalSignsActivity, "Heart rate calculated successfully", Toast.LENGTH_SHORT).show()
                         }
                     } catch (e: Exception) {
                         runOnUiThread {
-                            progressBar.visibility = ProgressBar.GONE
+                            loading.visibility=ProgressBar.GONE
                             Toast.makeText(this@VitalSignsActivity, "Error calculating heart rate: ${e.message}", Toast.LENGTH_LONG).show()
                         }
                     }
@@ -132,13 +126,13 @@ class VitalSignsActivity : ComponentActivity() {
     }
 
     private fun checkIfReadyToProceed() {
-        btnNextToSymptoms.isEnabled = (heartRate != null && respiratoryRate != null)
+        next.isEnabled=(repirationRateOutput != null && heartRateOutput!= null)
     }
 
-    private fun navigateToSymptomsActivity() {
-        val intent = Intent(this, SymptomsActivity::class.java).apply {
-            putExtra("HEART_RATE", heartRate)
-            putExtra("RESPIRATORY_RATE", respiratoryRate)
+    private fun takeMeToNextPage() {
+        val i=Intent(this, SymptomsActivity::class.java).apply {
+            putExtra("HEART_RATE", heartRateOutput)
+            putExtra("RESPIRATORY_RATE", repirationRateOutput)
         }
         startActivity(intent)
     }
