@@ -1,5 +1,6 @@
 package com.example.monitoringapp
 
+import android.graphics.Color;
 import android.content.Intent
 import androidx.activity.ComponentActivity
 import android.os.Bundle
@@ -19,12 +20,7 @@ class MainActivity : ComponentActivity() {
             setPadding(100, 100, 100, 100)
         }
 
-        val title = TextView(this).apply {
-            text = "Health Monitor"
-            textSize = 28f
-            setPadding(0, 0, 0, 100)
-        }
-        layout.addView(title)
+
 
         val btnRecordData = Button(this).apply {
             text = "Record health data"
@@ -37,6 +33,14 @@ class MainActivity : ComponentActivity() {
             setPadding(0, 50, 0, 50)
         }
         layout.addView(btnDeleteData)
+
+        val title = TextView(this).apply {
+            text = "Health Monitor"
+            textSize = 28f
+            setPadding(0, 0, 0, 100)
+        }
+        layout.setBackgroundColor(Color.parseColor("#FFBFB5"));
+        layout.addView(title)
 
         setContentView(layout)
 
