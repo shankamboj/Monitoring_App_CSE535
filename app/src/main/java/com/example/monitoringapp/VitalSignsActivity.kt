@@ -26,12 +26,12 @@ class VitalSignsActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vital_signs)
 
-        videoUpload =findViewById(R.id.btnSelectVideo)
-        csvUpload =findViewById(R.id.btnLoadCSV)
-        next =findViewById(R.id.btnNextToSymptoms)
-        heartRateData=findViewById(R.id.tvHeartRateResult)
-        respiratoryData=findViewById(R.id.tvRespiratoryRateResult)
-        loading=findViewById(R.id.progressBar)
+        videoUpload =findViewById(R.id.buttonForSelectingTheVideo)
+        csvUpload =findViewById(R.id.ButtonForLoadingCSV)
+        next =findViewById(R.id.takeMeToTheNextPage)
+        heartRateData=findViewById(R.id.outputForHeartRate)
+        respiratoryData=findViewById(R.id.oytputForRespiration)
+        loading=findViewById(R.id.loadingCircle)
 
         whatHappensOnButonClick()
     }
@@ -134,6 +134,6 @@ class VitalSignsActivity : ComponentActivity() {
             putExtra("HEART_RATE", heartRateOutput)
             putExtra("RESPIRATORY_RATE", repirationRateOutput)
         }
-        startActivity(intent)
+        startActivity(i)
     }
 }
