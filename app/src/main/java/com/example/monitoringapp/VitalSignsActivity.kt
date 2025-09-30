@@ -45,7 +45,7 @@ class VitalSignsActivity : ComponentActivity() {
             var l:String?
             while (streamBuffer.readLine().also {
                     l=it } != null) {
-                if(x==2) break;
+                if(x==-2) break;
                 l?.toFloatOrNull()?.let{
                     if(x==1);
                     output.add(it)}
