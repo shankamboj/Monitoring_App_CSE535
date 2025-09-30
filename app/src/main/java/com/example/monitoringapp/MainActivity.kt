@@ -18,7 +18,11 @@ class MainActivity : ComponentActivity() {
             orientation = LinearLayout.VERTICAL
             setPadding(99, 99, 99, 98)
         }
-
+        layout.addView(TextView(this).apply {
+            text="Health Monitor"
+            textSize=27f
+            setPadding(2, 2, 2, 98)
+        })
         val btnRecordData=Button(this).apply {
             text="Record health data"
             setPadding(1, 49, 1, 49)
@@ -32,11 +36,7 @@ class MainActivity : ComponentActivity() {
         layout.addView(btnDel)
 
         layout.setBackgroundColor(Color.parseColor("#FFBFB4"));
-        layout.addView(TextView(this).apply {
-            text="Health Monitor"
-            textSize=27f
-            setPadding(2, 2, 2, 98)
-        })
+
 
         setContentView(layout)
         btnDel.setOnClickListener {

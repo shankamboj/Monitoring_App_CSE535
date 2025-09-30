@@ -14,18 +14,12 @@ import kotlin.math.*
 suspend fun heartRateCalculator(uri: Uri, contentResolver: ContentResolver): Int {
     return withContext(Dispatchers.IO) {
         val result: Int
-        val proj = arrayOf(MediaStore.Images.Media.DATA)
-        val cursor = contentResolver.query(uri, proj, null, null, null)
-        val columnIndex =
-            cursor?.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-        cursor?.moveToFirst()
-        val path = cursor?.getString(columnIndex?:0)
-        cursor?.close()
 
         val retriever = MediaMetadataRetriever()
+
         val frameList = ArrayList<Bitmap>()
         try {
-            retriever.setDataSource(path)
+            retriever.setDataSource(contentResolver.openFileDescriptor(uri, "r")?.fileDescriptor)
             val duration =
                 retriever.extractMetadata(
                     MediaMetadataRetriever.METADATA_KEY_VIDEO_FRAME_COUNT
