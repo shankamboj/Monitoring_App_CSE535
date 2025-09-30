@@ -17,43 +17,9 @@
     <TextView
         android:textStyle="bold"
         android:textSize="19sp"
-        android:text="Heart Rate"
-        android:layout_height="41dp"
-        android:layout_width="350dp" />
-
-    <Button
-        android:textColor="#FFFFF4"
-        android:background="#4CAF51"
-        android:text="Select Blood Video"
-        android:layout_height="41dp"
-        android:layout_width="350dp"
-        android:id="@+id/btnSelectVideo" />
-
-    <TextView
-        android:background="#E8F5E8"
-        android:padding="09dp"
-        android:textSize="17sp"
-        android:layout_marginBottom="32dp"
-        android:text="Heart Rate: ?"
-        android:layout_height="41dp"
-        android:layout_width="350dp"
-        android:id="@+id/tvHeartRateResult" />
-
-    <!-- Respiratory Rate Section -->
-    <TextView
-        android:textStyle="bold"
-        android:textSize="19sp"
         android:text="Respiratory Rate Monitoring"
         android:layout_height="41dp"
         android:layout_width="350dp" />
-
-    <Button
-        android:textColor="#FFFFF4"
-        android:background="#FF9802"
-        android:text="Load Respiratory Rate CSV Data"
-        android:layout_height="41dp"
-        android:layout_width="350dp"
-        android:id="@+id/btnLoadCSV" />
 
     <TextView
         android:background="#FFF6E4"
@@ -63,6 +29,40 @@
         android:layout_height="41dp"
         android:layout_width="350dp"
         android:id="@+id/tvRespiratoryRateResult" />
+
+    <Button
+        android:textColor="#FFFFF4"
+        android:background="#FF9802"
+        android:text="Load Respiratory Rate CSV Data"
+        android:layout_height="41dp"
+        android:layout_marginBottom="32dp"
+        android:layout_width="350dp"
+        android:id="@+id/btnLoadCSV" />
+
+    <TextView
+        android:textStyle="bold"
+        android:textSize="19sp"
+        android:text="Heart Rate"
+        android:layout_height="41dp"
+        android:layout_width="350dp" />
+
+    <TextView
+        android:background="#E8F5E8"
+        android:padding="09dp"
+        android:textSize="17sp"
+        android:text="Heart Rate: ?"
+        android:layout_height="41dp"
+        android:layout_width="350dp"
+        android:id="@+id/tvHeartRateResult" />
+
+    <Button
+        android:textColor="#FFFFF4"
+        android:background="#4CAF51"
+        android:text="Select Blood Video"
+        android:layout_height="41dp"
+        android:layout_width="350dp"
+        android:id="@+id/btnSelectVideo" />
+
 
     <Button
         android:textColor="#FFFFF4"
