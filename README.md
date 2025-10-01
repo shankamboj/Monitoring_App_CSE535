@@ -40,6 +40,9 @@ Mobile computing can include following aspects as well:
 -  **Context Understanding:** the system should be aware of the context around which it is performing. For example - if we are gathering the data of user health, the app should know what are we collecting and why are we collecting. Using this information app should adjust it's according to the situations and perform better.
 -  **Hardware used:** We are using local server for storing the data locally. bHealthy used Health-Dev for connecting to sensors and phones. There can be multiple options on using the hardware and cloud resources. We should understand the different possibilities and use the one that best fits our requirements and use case.
 -  **Feedback and improvement:** The mobile should also be able to gather feedback and enhance its behaviour to best fit the user.
+- Project 1 showed the importance of not only the frontont of the application but also showed how the frontend interacts with the backend. how the backend interacts with the databse and store/fetch the data. Furthermore we also saw how the files are uploaded and processed in the backend. 
+We also used multiple tech stacks like SQL, kotlin, XML etc. We have used multiple different type of software technologies which were combined with hardware tools like camera and flashlight. 
+We have seen the blend of all the technologies which combine togethet to make an amazing working application. This shows  that the mobile application is not just an algorithms but combination of multiple aspects.
 - **Examples are as follow**
   - Fitbit: This combines smart hardware sensors, smart processing and centralised data storage
   - Pokemon mobile game - This uses user input, mobile movement, location, camera and other sensors. This is perfect example of smart application under mobile computing
