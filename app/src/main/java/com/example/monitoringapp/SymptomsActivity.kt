@@ -1,6 +1,7 @@
 package com.example.monitoringapp
 
 import android.content.ContentValues
+import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.activity.ComponentActivity
@@ -16,7 +17,7 @@ class SymptomsActivity : ComponentActivity() {
     lateinit var throatDataInput:RadioGroup
     lateinit var breatheData:RadioGroup
     lateinit var dataForFever:RadioGroup
-
+    lateinit var back: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_symptoms)
@@ -30,10 +31,17 @@ class SymptomsActivity : ComponentActivity() {
         breatheData = findViewById(R.id.rgShortnessOfBreath)
         dataForMusclesPain = findViewById(R.id.rgMuscleAche)
         throatDataInput = findViewById(R.id.rgSoreThroat)
+        back=findViewById(R.id.btnBack)
         var doRun=1;
         btnUploadSymptoms.setOnClickListener {
             if(doRun==1)
             writeToDb()
+        }
+        back.setOnClickListener {
+
+                val i=Intent(this, MainActivity::class.java)
+                startActivity(i)
+
         }
         var count=0;
         for(i in 1..5) {
@@ -72,10 +80,12 @@ class SymptomsActivity : ComponentActivity() {
         val rr=intent.getIntExtra(rrString, 0)
 
         if (iWantTorunThisCode==true) {
-            if( probOfThisCodeRuning>=100 && rr == 0 || hr == 0)
-            Toast.makeText(this, "Important data not founnd!", Toast.LENGTH_SHORT)
-                .show()
-            return
+            if( probOfThisCodeRuning>=100 && rr == 0 || hr == 0) {
+                Toast.makeText(this, "Important data not founnd!", Toast.LENGTH_SHORT)
+                    .show()
+                return
+            }
+
         }
         val interactWithDatabase=DatabaseHelper(this).writableDatabase
 

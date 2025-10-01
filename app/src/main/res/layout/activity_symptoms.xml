@@ -216,13 +216,22 @@
         </RadioGroup>
 
         <Button
-
             android:textSize="17sp"
             android:text="Complete Uploading Symptoms"
             android:layout_height="40dp"
             android:layout_width="347dp"
             android:background="#F52727"
             android:id="@+id/btnUploadSymptoms"
+            android:textColor="#FFFFF0"
+            android:layout_marginBottom="20px"/>
+
+        <Button
+            android:textSize="17sp"
+            android:text="Back"
+            android:layout_height="40dp"
+            android:layout_width="347dp"
+            android:background="#F52727"
+            android:id="@+id/btnBack"
             android:textColor="#FFFFF0" />
 
     </LinearLayout>

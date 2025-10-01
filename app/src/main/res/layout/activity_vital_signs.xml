@@ -67,7 +67,6 @@
     <Button
         android:textColor="#FFFFF4"
         android:background="#2296F3"
-        android:enabled="false"
         android:layout_marginTop="20dp"
         android:text="Next: Manual Symptoms Logging"
         android:layout_height="41dp"
