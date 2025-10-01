@@ -1,4 +1,4 @@
-Q1: Specifications for Health-dev framework:
+### Q1: Specifications for Health-dev framework:
 
 - **Data collection and sensor**:
     - Describe on what all sensers to use ( camera, mic, motion sensor, vibration etc ).
@@ -17,7 +17,7 @@ Q1: Specifications for Health-dev framework:
   - **Target platforms**
     -Operating system targeted: Some apps can only run on a specific operating system. The app should be designed according to the targeted operating system
   - In case of multi platform application, specific type of tech stacks should be used while keeping in mind that configuration is set for all the type of mobiles and operating system.
-- Q2: Using bHealthy
+### Q2: Using bHealthy
 - Use data from bHealthy and combine it with data stored in database in project 1. Find the regular pattern like monthly headaches, fever during specific weather time and temperature. Send alerts to user to take precautions
 -  Understand the regular health issues of the user. Over the time use all the data from different sources and observe user symptoms. Use this data to predict the user's upcoming health issues
 -  We store use past medical details in the SQL database.We can enhance this to link to other user medical data like user medical history, alergies, medicines used etc. We can combine data from multiple different sources and types and aggregate them to find the more accurate user medical analysis. This will help us to give better feedback to the user and use this to further improve the medical health monitoring for the specific user.
@@ -32,7 +32,7 @@ Q1: Specifications for Health-dev framework:
   - logic like less time used this app means user doesn't like the app. If user keeps using the app more this means that app shows correct data and user feedback is good. 
 -  It is important to move from manual feedback to smart context aware feedback.
 
-- Q3: Yes. My thoughts about this have changed. Before i used to think that mobile computing is only about developing mobile apps but now I have a wider context around the same.
+### Q3: Yes. My thoughts about this have changed. Before i used to think that mobile computing is only about developing mobile apps but now I have a wider context around the same.
 
 Mobile computing can include following aspects as well:
 
